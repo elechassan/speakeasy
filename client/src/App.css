@@ -101,3 +101,11 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+
+
+
+textarea {
+  border: 1px solid black;
+  margin: auto;
+}

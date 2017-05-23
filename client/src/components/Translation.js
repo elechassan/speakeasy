@@ -23,11 +23,18 @@ class Translation extends Component {
 
   render() {
     return (
-      <div className="translation">
-        <form onSubmit={this.speak}>
-          <input type='text' name='text' onChange={this.handleInput}/>
-          <button onClick={this.speak}>submit</button>
-        </form>
+      <div id='translation-container'>
+        <div id='translation-div'>
+          <div id='input-div'>
+            <form onSubmit={this.speak}>
+              <textarea rows='4' name='text' onChange={this.handleInput}/>
+              <button onClick={this.speak}>submit</button>
+            </form>
+          </div>
+          <div id='output-div'>
+            <input type='textarea' />
+          </div>
+        </div>
       </div>
     );
   }
