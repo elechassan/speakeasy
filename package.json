@@ -1,0 +1,32 @@
+{
+  "name": "speakeasy",
+  "version": "1.0.0",
+  "description": "backend for voice recognition app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "debugger": "DEBUG=*:* npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elechassan/speakeasy.git"
+  },
+  "author": "David,Elsie and Hassan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elechassan/speakeasy/issues"
+  },
+  "homepage": "https://github.com/elechassan/speakeasy#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7",
+    "pg-promise": "^5.7.1"
+  }
+}
