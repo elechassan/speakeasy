@@ -17,7 +17,7 @@ class Footer extends Component {
         <div id='footer-container'>
           <div id='footer-div'>
             <div id='footer-text-container'>
-              <p>SpeakEasy</p>
+              <div>SpeakEasy</div>
             </div>
           </div>
         </div>
