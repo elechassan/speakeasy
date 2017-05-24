@@ -1,13 +1,10 @@
-INSERT INTO phrases ( phrases, users_id) VALUES
+INSERT INTO phrases (phrases) VALUES
   (
-    'how are you',
-    1
+    'how are you'
   ),
   (
-    'where is th bathroom',
-    2
+    'where is th bathroom'
   ),
   (
-    'where is the gym',
-    3
+    'where is the gym'
   );

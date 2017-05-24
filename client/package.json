@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google-cloud/translate": "^0.8.2",
+    "bytebuffer": "^5.0.1",
+    "child_process": "^1.0.2",
+    "dotenv": "^4.0.0",
+    "google-cloud": "^0.54.0",
+    "google-translate": "^2.0.4",
+    "googleapis": "^19.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },

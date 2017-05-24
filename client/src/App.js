@@ -13,10 +13,23 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3001/api/phrases') 
+    .then((response) => {
+      return response.json()
+    })
+    .then ((responseJson) => {
+      console.log(responseJson)
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <Translation />
+       {/*} <Nav />
+        <Welcome />
+        <Footer /> */}
       </div>
     );
   }
