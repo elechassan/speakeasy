@@ -6,6 +6,7 @@ html {
 .App {
   height: 100%;
   width: 100%;
+  display: flex;
 }
 
 /*--------------------------
@@ -14,7 +15,7 @@ html {
 
 #nav-container {
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0%;
 }
 
@@ -41,7 +42,8 @@ html {
 #welcome-container {
   display: flex;
   justify-content: center;
-  margin-top: 35px;
+  align-items: center;
+  margin: 30% 0;
 }
 
 #welcome-div {
@@ -81,22 +83,29 @@ h1, h2 {
       FOOTER COMPONENT
 --------------------------*/
 
-#footer-container {
-  display: flex;
-  position: absolute;
+footer {
+  position: fixed;
   bottom: 0%;
-  height: 40px;
   width: 100%;
-  background-color: green;
+}
+
+#footer-container {
+  width: 100%;
 }
 
 #footer-div {
   display: flex;
-  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: green;
   justify-content: center;
-  text-align: center;
+  align-items: center;
 }
 
-#footer-text-container {
+
+
+
+textarea {
+  border: 1px solid black;
   margin: auto;
 }
