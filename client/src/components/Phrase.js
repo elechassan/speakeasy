@@ -52,13 +52,15 @@ class Phrase extends Component {
                               onChange={this.handleInputLanguageChange}
                               /> <br/>
 
-                              <input 
+                              {/*<input 
                               type="text"
                               value={this.state.inputCountryChange}
                               name='country_type'
                               placeholder='Enter country ID here'
                               onChange={this.handleInputCountryChange}
-                              /> <br/>
+                              /> <br/>*/}
+
+                              {/*have to continue to work on a few things*/}
                         </form>
                   </li>
             );

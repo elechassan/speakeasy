@@ -22,6 +22,8 @@ class AddPhraseForm extends Component {
                         onChange={this.props.handleInputLanguageChange} 
                         /> <br/>
 
+                        {/*Might want to add another input box or cange the input box names after looking into David's file*/}
+
                         <input type="submit" value="Add Phrase!" />
                   </form>
             );

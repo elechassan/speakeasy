@@ -6,7 +6,7 @@ class PhraseList extends Component {
       render() {
             return (
                   <ul className="phrase-list">
-                        {/* */}
+                        {/* Make sure it is correct and that it works before officially starting on CSS*/}
                         {this.props.phrase.map((phrases) => {
                               return (
                                     <Phrase 
