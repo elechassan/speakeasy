@@ -83,10 +83,9 @@ class Phrase extends Component {
                   <li className="phrase">
                         <h2>{this.props.phrase.language}</h2>
                         <p>Content: {this.props.phrase.content}</p>
-
-                        {/*I don't know if the country option will be available but I'm keeping it in case that's something we want to add post MVP as an option for the user*/}
                         {/*<p>Country: {this.props.phrase.country_type}</p>*/}
-
+                        {/*I don't know if the country option will be available but I'm keeping it in case that's something we want to add post MVP as an option for the user*/}
+                        
 
                         {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
                         <button onClick={() => { this.props.handleDeletePhrase(this.props.phrase.id) }}>
