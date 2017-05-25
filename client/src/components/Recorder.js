@@ -14,10 +14,8 @@ class Nav extends Component {
     this.audioProcess = this.audioProcess.bind(this);
   }
 
-
-
   componentDidMount() {
-    this.audioProcess();
+    let audioClip = this.audioProcess();
   }
 
   audioProcess() {
@@ -26,12 +24,13 @@ class Nav extends Component {
     const soundClips = document.querySelector('#sound-clips');
     let audioClip = null;
     if (navigator.getUserMedia) {
+      this.setState({mediaWorks: true});
       console.log('getUserMedia supported.');
       navigator.getUserMedia (
       {audio: true},
-      function start(stream) {        // Success callback
+      (stream) => {        // Success callback
         const mediaRecorder = new MediaRecorder(stream);
-        record.onclick = function() {
+        record.onclick = () => {
         mediaRecorder.start();
         console.log(mediaRecorder.state);
         console.log("recorder started");
@@ -39,9 +38,9 @@ class Nav extends Component {
         record.style.color = "black";
       }
       let chunks = [];
-      mediaRecorder.ondataavailable = function(e) {
+      mediaRecorder.ondataavailable = (e) => {
       chunks.push(e.data)};
-      stop.onclick = function() {
+      stop.onclick = () => {
         if(mediaRecorder.state === 'recording') {
         mediaRecorder.stop();
         console.log(mediaRecorder.state);
@@ -52,7 +51,7 @@ class Nav extends Component {
           console.log('not recording!');
         }
       }
-      mediaRecorder.onstop = function(e) {
+      mediaRecorder.onstop = (e) => {
         console.log("recorder stopped");
 
         let clipName = prompt('Enter a name for your sound clip');
@@ -73,24 +72,25 @@ class Nav extends Component {
         soundClips.appendChild(clipContainer);
 
         let blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-        audioClip = blob;
+        this.props.recordState(blob);
         chunks = [];
-        console.log(blob);
         let audioURL = window.URL.createObjectURL(blob);
         audio.src = audioURL;
-        console.log(audioURL);
-        deleteButton.onclick = function(e) {
+        deleteButton.onclick = (e) => {
           let evtTgt = e.target;
           evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
         }
-      }},
-      function(err) {           // Error callback
+      }
+    },
+      (err) => {           // Error callback
          console.log('The following gUM error occured: ' + err);
       });
     } else {
       console.log('getUserMedia not supported on your browser!');
     }
-
+    console.log(this.state);
+        console.log(`audio clip: ${audioClip}`);
+        // return audioClip;
   }
 
 
