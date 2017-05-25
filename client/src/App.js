@@ -4,6 +4,7 @@ import Welcome from './components/Welcome';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Translation from './components/Translation';
+import Recorder from './components/Recorder';
 
 class App extends Component {
   constructor(props) {
@@ -26,8 +27,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Translation />
-       {/*} <Nav />
+        <Recorder />
+        {/*<Translation />
+        <Nav />
         <Welcome />
         <Footer /> */}
       </div>
