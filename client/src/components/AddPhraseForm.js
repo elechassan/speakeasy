@@ -22,6 +22,16 @@ class AddPhraseForm extends Component {
                         onChange={this.props.handleInputLanguageChange} 
                         /> <br/>
 
+                        {/*In case we need to add a section where you can specify what country the language is from. Post MVP moves*/}
+                        
+                        {/*<input type="text"
+                        value={this.props.handleInputCountryChange}
+                        name='country'
+                        placeholder='Add Country here'
+                        onChange={this.propshandleInputCountryChange}
+                        /> <br/>*/}
+
+
                         {/*Might want to add another input box or cange the input box names after looking into David's file*/}
 
                         <input type="submit" value="Add Phrase!" />
