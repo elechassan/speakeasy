@@ -101,6 +101,7 @@ class Phrase extends Component {
 
       /**
        * the render method that will render the form of the phrase depending on the value of 'isBeingEdited'
+       * Also realized that maybe I might have to start styling before anything so I can see the buttons and how they interact with the page. 
        */ 
        render() {
              if (this.state.isBeingEdited === false) {
