@@ -8,7 +8,9 @@ class Translation extends Component {
     this.state = {
       text: '',
       langFrom: '',
-      langTo: null,
+      langTo: '',
+      result: '',
+      speakLang: '',
     }
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
@@ -17,11 +19,6 @@ class Translation extends Component {
 
 translation(e) {
   e.preventDefault();
-  console.log(e.target.langTo.value);
-  console.log('setting state');
-  this.setState({langTo: e.target.langTo.value});
-  console.log('state set');
-  console.log(this.state);
   fetch('http://localhost:3001/translation', {
     method: 'POST',
     headers: {
@@ -29,7 +26,8 @@ translation(e) {
     },
     body: JSON.stringify({
       text: e.target.text.value,
-      lang: e.target.lang.value,
+      langFrom: e.target.langFrom.value,
+      langTo: e.target.langTo.value,
     })
   })
   .then((res) => {
@@ -37,7 +35,48 @@ translation(e) {
   })
   .then((json) => {
     console.log(json);
-    this.speak(json.data);
+    this.setState({result: json.data.translation});
+    let speakLang;
+    switch (json.data.target) {
+      case 'es': 
+        speakLang = 'Spanish Latin American Female';
+        break;
+      case 'fr': 
+        speakLang = 'French Female';
+        break;
+      case 'pt': 
+        speakLang = 'Brazilian Portuguese Female';
+        break;
+      case 'ru': 
+        speakLang = 'Russian Female';
+        break;
+      case 'hi': 
+        speakLang = 'Hindi Female';
+        break;
+      case 'it': 
+        speakLang = 'Italian Female';
+        break;
+      case 'ar': 
+        speakLang = 'Arabic Male';
+        break;
+      case 'zh-CN': 
+        speakLang = 'Chinese Female';
+        break;
+      case 'ja': 
+        speakLang = 'Japanese Female';
+        break;
+      case 'de': 
+        speakLang = 'Deutsch Female';
+        break;
+      case 'sw': 
+        speakLang = 'Swahili Male';
+        break;
+      case 'en': 
+        speakLang = 'US English Female';
+        break;
+      this.setState({speakLang: speakLang})
+    }
+    this.speak(json.data.translation, speakLang);
   })
 }
 
@@ -45,9 +84,9 @@ translation(e) {
     this.setState({text: e.target.value});
   }
 
-  speak(data) {
-    console.log(data)
-    responsiveVoice.speak(data.translation, 'Spanish Male', {rate: 1.0});
+  speak(result, lang) {
+    console.log(`in speech ${result, lang}`)
+    responsiveVoice.speak(result, lang);
   }
 
   render() {
@@ -57,7 +96,7 @@ translation(e) {
         <div id='translation-div'>
           <div id='input-div'>
             <form onSubmit={(e) => this.translation(e)}>
-              <textarea name='text' rows='4' onChange={this.handleInput}/><br/>
+              <textarea name='text' rows='4' onChange={(e) => this.handleInput(e)}/><br/>
                 <div>Translate from:</div>
                 <select name='langFrom'> 
                   <option value='en'>English</option>
@@ -71,7 +110,6 @@ translation(e) {
                   <option value='ja'>Japanese</option>
                   <option value='de'>German</option>
                   <option value='sw'>Swahili</option>
-                  <option value='iw'>Hebrew</option>
                 </select><br/>
                 <div>Translate to:</div>
                 <select name='langTo'> 
@@ -86,10 +124,9 @@ translation(e) {
                   <option value='ja'>Japanese</option>
                   <option value='de'>German</option>
                   <option value='sw'>Swahili</option>
-                  <option value='iw'>Hebrew</option>
                 </select><br/>
-              <textarea name='lang' rows='4' id='language-box' />
-              <input type='submit'/>
+              <input type='submit'/><br/>
+              <div id='result-box'>{this.state.result}</div>
             </form>
           </div>
         </div>
