@@ -3,6 +3,7 @@ const Phrases = require('../models/Phrases');
 const phrasesController = {};
 
 phrasesController.index = (req, res) => {
+  console.log('in controller');
   Phrases.findAll()
     .then(phrases => {
       res.json({ 
@@ -11,6 +12,7 @@ phrasesController.index = (req, res) => {
       });
     })
     .catch(err => {
+      console.log('errorrrrr')
       console.log(err);
       res.status(400).json({message: '400', err});
     });

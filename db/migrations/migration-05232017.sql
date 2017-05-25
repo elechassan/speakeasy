@@ -1,14 +1,15 @@
-\c speak-easy
+\c speak_easy;
+
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS phrases;
 
 CREATE TABLE IF NOT EXISTS phrases (
   id BIGSERIAL PRIMARY KEY,
-  phrase_text VARCHAR(1024)
+  phrases VARCHAR(1024)
 );
 
 CREATE TABLE IF NOT EXISTS users (
   id BIGSERIAL PRIMARY KEY,
   user_name VARCHAR(1024),
-  user_password VARCHAR(1024),
-  user_id INTEGER REFERENCES phrases(id)
-
+  user_password VARCHAR(1024)
 );

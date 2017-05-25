@@ -5,6 +5,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+require('dotenv').config()
 
 /* setting up port & listen */
 const PORT = process.env.PORT || 3001;
@@ -31,6 +32,9 @@ app.get('/', function(req, res) {
 /* phrases API route */
 const phrasesRoutes = require('./routes/phrasesRoutes');
 app.use('/api/phrases', phrasesRoutes);
+
+const translationRoute = require('./routes/translationRoute');
+app.use('/translation', translationRoute);
 
 /* handling 404 */
 app.get('*', function(req, res) {

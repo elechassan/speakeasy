@@ -3,6 +3,7 @@ const db = require('../db/config');
 const Phrases = {};
 
 Phrases.findAll = () => {
+  console.log('in model');
   return db.query(
     `SELECT * FROM phrases`
   );
