@@ -61,15 +61,56 @@ class Phrase extends Component {
                               /> <br/>*/}
 
                               {/*have to continue to work on a few things*/}
+
+                              <input 
+                              style={{visibility: 'hidden'}}
+                              readOnly
+                              name="id"
+                              value={this.props.phrase.id}
+                              />
+                              <input type="submit" value="Submit Phrase Edit!"/>
                         </form>
                   </li>
             );
       }
 
 
+      /**
+       * This will be called only when the render method for isBeingEdited is set to false.
+       */ 
+      renderPhrase() {
+            return (
+                  <li className="phrase">
+                        <h2>{this.props.phrase.language}</h2>
+                        <p>Content: {this.props.phrase.content}</p>
+                        <p>Country: {this.props.phrase.country_type}</p>
+
+                        {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
+                        <button onClick={() => { this.props.handleDeletePhrase(this.props.phrase.id) }}>
+                              Delete Phrase
+                        </button>
+
+                        <button onClick={() => {
+                              this.setState({isBeingEdited: true})
+                              }}>
+                              Edit Phrase
+                        </button>
+                  </li>
+            );
+      }
+
+      /**
+       * the render method that will render the form of the phrase depending on the value of 'isBeingEdited'
+       */ 
+       render() {
+             if (this.state.isBeingEdited === false) {
+                   return this.renderPhrase();
+             } else {
+                   return this.renderEditForm();
+             }
+       }
 
 }
-
 
 
 

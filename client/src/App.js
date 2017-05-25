@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Welcome from './components/Welcome';
+// import AddPhraseForm from './components/AddPhraseForm';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Translation from './components/Translation';
