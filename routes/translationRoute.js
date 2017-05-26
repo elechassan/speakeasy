@@ -4,6 +4,7 @@ require('isomorphic-fetch');
 
 const translationRoute = express.Router();
 
-translationRoute.post('/', translationController.translate);
+translationRoute.post('/translate', translationController.translate);
+translationRoute.post('/recognize', translationController.recognize);
 
 module.exports = translationRoute;

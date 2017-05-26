@@ -10,8 +10,10 @@
     "google-cloud": "^0.54.0",
     "google-translate": "^2.0.4",
     "googleapis": "^19.0.0",
+    "node-record-lpcm16": "^0.3.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.5"
