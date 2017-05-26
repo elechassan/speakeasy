@@ -8,13 +8,21 @@ import Welcome from './components/Welcome';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Translation from './components/Translation';
+import Recorder from './components/Recorder';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text: '',
+      audioClip: null,
     }
+    this.recordState = this.recordState.bind(this);
+  }
+
+  recordState(clip) {
+    this.setState({audioClip: clip});
+    console.log(this.state.audioClip);
   }
 
   componentDidMount() {
@@ -30,8 +38,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Translation />
-       {/*} <Nav />
+        <Recorder recordState={this.recordState}/><br/><br/>
+        <Translation audioClip={this.state.audioClip}/>
+        {/*<Nav />
         <Welcome />
         <Footer /> */}
       </div>
