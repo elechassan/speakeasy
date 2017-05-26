@@ -11,11 +11,24 @@ class Translation extends Component {
       langTo: '',
       result: '',
       speakLang: '',
+      audioClip: null,
     }
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
     this.translation = this.translation.bind(this);
   }
+
+componentDidMount() {
+  console.log(this.props.audioClip);
+}
+
+componentDidUpdate() {
+  console.log(this.state.audioClip);
+}
+
+audioToGoogle() {
+
+}
 
 translation(e) {
   e.preventDefault();
@@ -90,7 +103,7 @@ translation(e) {
   }
 
   render() {
-    console.log('render');
+    console.log(`in state ${this.state.audioClip}`);
     return (
       <div id='translation-container'>
         <div id='translation-div'>
