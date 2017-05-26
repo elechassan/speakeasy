@@ -37,11 +37,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Recorder recordState={this.recordState}/>
+        <Nav />
+        {/*<Recorder recordState={this.recordState}/>*/}
         <Translation audioClip={this.state.audioClip}/>
-        {/*<Nav />
-        <Welcome />
-        <Footer /> */}
+        <Footer /> 
       </div>
     );
   }

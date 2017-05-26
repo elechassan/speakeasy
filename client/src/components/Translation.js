@@ -120,6 +120,10 @@ translation(e) {
     this.setState({text: e.target.value});
   }
 
+  handleResult(e) {
+    this.setState({result: e.target.value});
+  }
+
   speak(result, lang) {
     console.log(`in speech ${result, lang}`)
     responsiveVoice.speak(result, lang);
@@ -130,43 +134,49 @@ translation(e) {
       <div id='translation-container'>
         <div id='translation-div'>
           <div id='input-div'>
-            <form onSubmit={(e) => this.translation(e)}>
-              <textarea name='text' rows='4' value={this.state.text} onChange={(e) => this.handleInput(e)}/><br/>
-                <div>Translate from:</div>
-                <select name='langFrom'> 
-                  <option value='en'>English</option>
-                  <option value='es'>Spanish</option>
-                  <option value='fr'>French</option>
-                  <option value='pt'>Portuguese</option>
-                  <option value='it'>Italian</option>
-                  <option value='ru'>Russian</option>
-                  <option value='ar'>Arabic</option>
-                  <option value='zh-CN'>Chinese</option>
-                  <option value='ja'>Japanese</option>
-                  <option value='de'>German</option>
-                  <option value='sw'>Swahili</option>
-                </select><br/>
-                <div>Translate to:</div>
-                <select name='langTo'> 
-                  <option value='en'>English</option>
-                  <option value='es'>Spanish</option>
-                  <option value='fr'>French</option>
-                  <option value='pt'>Portuguese</option>
-                  <option value='it'>Italian</option>
-                  <option value='ru'>Russian</option>
-                  <option value='ar'>Arabic</option>
-                  <option value='zh-CN'>Chinese</option>
-                  <option value='ja'>Japanese</option>
-                  <option value='de'>German</option>
-                  <option value='sw'>Swahili</option>
-                </select><br/>
-              <input type='submit'/><br/>
-              <div id='result-box'>{this.state.result}</div>
+            <form id='translation-form' onSubmit={(e) => this.translation(e)}>
+              <textarea id='input-box' name='text' rows='3' value={this.state.text} onChange={(e) => this.handleInput(e)}/>
+                <div id='to-from-div'>
+                <div>From:</div>
+                  <select name='langFrom'> 
+                    <option value='en'>English</option>
+                    <option value='es'>Spanish</option>
+                    <option value='fr'>French</option>
+                    <option value='pt'>Portuguese</option>
+                    <option value='it'>Italian</option>
+                    <option value='ru'>Russian</option>
+                    <option value='ar'>Arabic</option>
+                    <option value='zh-CN'>Chinese</option>
+                    <option value='ja'>Japanese</option>
+                    <option value='de'>German</option>
+                    <option value='sw'>Swahili</option>
+                  </select>
+                  <div>To:</div>
+                  <select name='langTo'> 
+                    <option value='en'>English</option>
+                    <option value='es'>Spanish</option>
+                    <option value='fr'>French</option>
+                    <option value='pt'>Portuguese</option>
+                    <option value='it'>Italian</option>
+                    <option value='ru'>Russian</option>
+                    <option value='ar'>Arabic</option>
+                    <option value='zh-CN'>Chinese</option>
+                    <option value='ja'>Japanese</option>
+                    <option value='de'>German</option>
+                    <option value='sw'>Swahili</option>
+                  </select>
+                  <input type='submit'/><br/>
+                </div>
+              <textarea id='result-box' name='result' rows='3' value={this.state.result} onChange={(e) => this.handleResult(e)}></textarea>
             </form>
           </div>
+          <div id='two-button-div'>
+            <button id='save-btn'>Save</button>
+            <button id='clear-btn'>Clear</button>
+          </div>
         </div>
-        <div id='record-button-container'>
-          <button id='start-recog' onClick={this.recognizeAudio}>Recognize</button>
+        <div id='recognize-button-container'>
+          <button id='start-recog' onClick={this.recognizeAudio}><i className="fa fa-microphone fa-3x" aria-hidden="true"></i></button>
           {/*<button id='stop-recog' onClick={this.stopRec}>Stop Recognition</button>*/}
         </div>
       </div>

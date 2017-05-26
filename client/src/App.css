@@ -103,6 +103,81 @@ footer {
   align-items: center;
 }
 
+/*---------------------------------------
+RECORD COMPONENT
+---------------------------------------*/
+
+#recorder-div {
+  margin: 75px;
+}
+
+/*---------------------------------------
+TRANSLATION COMPONENT
+---------------------------------------*/
+
+#translation-container {
+  display: flex;
+  width: 100%;
+  margin: 75px auto;
+  flex-direction: column;
+}
+
+#translation-div, #input-div, #translation-form {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+}
+
+#input-box, #result-box {
+  width: 85%;
+  font-size: 1.75em;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+select, input {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+#to-from-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#two-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 25px;
+}
+
+#save-btn, #clear-btn {
+  font-size: 1.5em;
+  border: 1px solid black;
+  padding: 5px 35px;
+}
+
+#recognize-button-container {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  left: 43%;
+  border: 1px solid black;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+
+
+
+
+
 
 
 
