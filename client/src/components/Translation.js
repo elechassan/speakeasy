@@ -12,20 +12,37 @@ class Translation extends Component {
       result: '',
       speakLang: '',
       audioClip: null,
+      isRecording: false,
+      recClass: 'off',
     }
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
     this.translation = this.translation.bind(this);
     this.recognizeAudio = this.recognizeAudio.bind(this);
+    this.recogRoute = this.recogRoute.bind(this);
   }
 
 componentDidMount() {
   this.setState({audioClip: this.props.audioClip});
-  console.log(this.props.audioClip);
+  console.log(this.state.isRecording);
+
+}
+
+recogRoute() {
+  this.setState((prevState) => {return ({isRecording: !prevState.isRecording})}, 
+    () => {
+      if (this.state.isRecording === true) {
+        this.setState({recClass: 'rec'});
+        this.recognizeAudio();
+      }
+      else {
+        this.setState({recClass: 'off'});
+        this.stopRec();
+      }
+  });
 }
 
 recognizeAudio() {
-  console.log(this.props.audioClip);
   fetch('http://localhost:3001/translation/recognize', {
     method: 'POST',
     headers: {
@@ -39,11 +56,11 @@ recognizeAudio() {
   .then((json) => {
     let jsonObj = JSON.parse(json);
     this.setState({text: jsonObj._text})
-    console.log(this.state.text);
   })
 }
 
 stopRec() {
+  console.log('stop');
   fetch('http://localhost:3001/translation/recognize', {
     method: 'POST',
     headers: {
@@ -175,9 +192,9 @@ translation(e) {
             <button id='clear-btn'>Clear</button>
           </div>
         </div>
-        <div id='recognize-button-container'>
-          <button id='start-recog' onClick={this.recognizeAudio}><i className="fa fa-microphone fa-3x" aria-hidden="true"></i></button>
-          {/*<button id='stop-recog' onClick={this.stopRec}>Stop Recognition</button>*/}
+        <div id='recognize-button-container' className={this.state.recClass}>
+          <button id='start-recog' onClick={this.recogRoute}><i className={`${this.state.recClass} fa fa-microphone fa-3x`} aria-hidden="true"></i></button>
+          {/*<button id='stop-recog' onMouseup={this.stopRec}>Stop Recognition</button>*/}
         </div>
       </div>
     );

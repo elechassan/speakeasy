@@ -173,9 +173,23 @@ select, input {
   padding: 10px;
 }
 
+.off {
+  background-color: white;
+  color: black;
+  border: none;
+}
 
+.rec {
+  background-color: red;
+  color: white;
+  border: none;
+}
 
-
+#start-recog {
+  background: none;
+  border: none;
+  outline: none;
+}
 
 
 
