@@ -1,9 +1,9 @@
 INSERT INTO phrases (phrases) VALUES
   (
-    'how are you'
+    'how are you',
   ),
   (
-    'where is th bathroom'
+    'where is the bathroom'
   ),
   (
     'where is the gym'
