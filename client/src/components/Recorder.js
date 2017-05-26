@@ -15,7 +15,7 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    let audioClip = this.audioProcess();
+    this.audioProcess();
   }
 
   audioProcess() {
@@ -24,6 +24,12 @@ class Nav extends Component {
     const soundClips = document.querySelector('#sound-clips');
     let audioClip = null;
     if (navigator.getUserMedia) {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    var audioCtx = new AudioContext();   // from MDN to get sample rate!!
+// Older webkit/blink browsers require a prefix
+
+      console.log('****************************************')
+      console.log(audioCtx.sampleRate);
       this.setState({mediaWorks: true});
       console.log('getUserMedia supported.');
       navigator.getUserMedia (
@@ -72,7 +78,12 @@ class Nav extends Component {
         soundClips.appendChild(clipContainer);
 
         let blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-        this.props.recordState(blob);
+        var reader = new FileReader();
+        reader.readAsDataURL(blob);                     //from stackoverflow
+        reader.onloadend = () => {
+          let blob64 = reader.result;     
+          this.props.recordState(blob64);
+        }
         chunks = [];
         let audioURL = window.URL.createObjectURL(blob);
         audio.src = audioURL;
@@ -92,12 +103,6 @@ class Nav extends Component {
         console.log(`audio clip: ${audioClip}`);
         // return audioClip;
   }
-
-
-      audioTest(msg) {
-        console.log('in audio test');
-      }
-
 
   render() {
     return (

@@ -16,29 +16,52 @@ class Translation extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
     this.translation = this.translation.bind(this);
+    this.recognizeAudio = this.recognizeAudio.bind(this);
   }
 
 componentDidMount() {
+  this.setState({audioClip: this.props.audioClip});
   console.log(this.props.audioClip);
 }
 
-componentDidUpdate() {
-  console.log(this.state.audioClip);
+recognizeAudio() {
+  console.log(this.props.audioClip);
+  fetch('http://localhost:3001/translation/recognize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({status: 'go'})
+  })
+  .then((res) => {
+    return res.json()
+  })
+  .then((json) => {
+    let jsonObj = JSON.parse(json);
+    this.setState({text: jsonObj._text})
+    console.log(this.state.text);
+  })
 }
 
-audioToGoogle() {
-
+stopRec() {
+  fetch('http://localhost:3001/translation/recognize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({status: 'stop'})
+  })
 }
 
 translation(e) {
   e.preventDefault();
-  fetch('http://localhost:3001/translation', {
+  fetch('http://localhost:3001/translation/translate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      text: e.target.text.value,
+      text: this.state.text,
       langFrom: e.target.langFrom.value,
       langTo: e.target.langTo.value,
     })
@@ -103,13 +126,12 @@ translation(e) {
   }
 
   render() {
-    console.log(`in state ${this.state.audioClip}`);
     return (
       <div id='translation-container'>
         <div id='translation-div'>
           <div id='input-div'>
             <form onSubmit={(e) => this.translation(e)}>
-              <textarea name='text' rows='4' onChange={(e) => this.handleInput(e)}/><br/>
+              <textarea name='text' rows='4' value={this.state.text} onChange={(e) => this.handleInput(e)}/><br/>
                 <div>Translate from:</div>
                 <select name='langFrom'> 
                   <option value='en'>English</option>
@@ -142,6 +164,10 @@ translation(e) {
               <div id='result-box'>{this.state.result}</div>
             </form>
           </div>
+        </div>
+        <div id='record-button-container'>
+          <button id='start-recog' onClick={this.recognizeAudio}>Recognize</button>
+          {/*<button id='stop-recog' onClick={this.stopRec}>Stop Recognition</button>*/}
         </div>
       </div>
     );

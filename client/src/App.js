@@ -21,7 +21,6 @@ class App extends Component {
 
   recordState(clip) {
     this.setState({audioClip: clip});
-    console.log(this.state.audioClip);
   }
 
   componentDidMount() {
@@ -37,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Recorder recordState={this.recordState}/><br/><br/>
+        <Recorder recordState={this.recordState}/>
         <Translation audioClip={this.state.audioClip}/>
         {/*<Nav />
         <Welcome />
