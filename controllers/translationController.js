@@ -18,7 +18,7 @@ translationController.recognize = (req, res) => {
   
  if (req.body.status === 'go') {
   rec.start().pipe(request.post({
-    'url'     : 'https://api.wit.ai/speech?client=chromium&lang=en-us&output=json',
+    'url'     : `https://api.wit.ai/speech?client=chromium&lang=en-us&output=json`,   //add multi-language input functionality
     'headers' : {
       'Accept'        : 'application/vnd.wit.20160202+json',
       'Authorization' : 'Bearer ' + witToken,
@@ -26,10 +26,11 @@ translationController.recognize = (req, res) => {
     }
   }, exports.parseResult))
  }
-
+ 
  if (req.body.status === 'stop') {
   rec.stop()
  }
+
 }
 
 

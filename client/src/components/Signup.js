@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import responsiveVoice from './responsiveVoice.js';
 
 class Signup extends Component {
   constructor(props) {
@@ -7,17 +6,36 @@ class Signup extends Component {
     this.state = {
       text: '',
     }
-
   }
 
-
+signUp(e) {
+  e.preventDefault();
+  fetch('http://localhost:3001/auth/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: e.target.username.value,
+      password: e.target.password.value,
+    })
+  })
+  .then((res) => {
+    return res.json()
+  })
+  .then((json) => {
+    console.log(json);
+  })
+}
 
   render() {
     return (
-      <div className="signup">
-
-
-
+      <div className="signup" onSubmit={(e) => this.signUp(e)}>
+        <form>
+          <input type='text' name='username' placeholder='username'/>
+          <input type='text' name='password' placeholder='password'/>
+          <input type='submit' />
+        </form>
       </div>
     );
   }
