@@ -174,16 +174,12 @@ translation(e) {
 }
 
   convoToggle() {
-    console.log('first', this.state.convoMode)
-    this.setState((prevState) => {this.setState({convoMode: !(prevState.convoMode)})},
+    this.setState({convoMode: !this.state.convoMode},
     () => {
-      console.log('state set', this.state.convoMode)
       if (this.state.convoMode === true) {
-        console.log('inside', this.state.convoMode)
         this.setState({convoStyle: {backgroundColor: 'black', color: 'white'}})
       } else {this.setState({convoStyle: {backgroundColor: 'white', color: 'black'}})}
     });
-    console.log('outside', this.state.convoMode)
   }
 
   clear() {
