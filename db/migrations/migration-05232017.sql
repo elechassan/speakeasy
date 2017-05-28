@@ -10,6 +10,6 @@ CREATE TABLE IF NOT EXISTS phrases (
 
 CREATE TABLE IF NOT EXISTS users (
   id BIGSERIAL PRIMARY KEY,
-  user_name VARCHAR(1024),
-  user_password VARCHAR(1024)
+  username VARCHAR(1024),
+  password VARCHAR(1024)
 );

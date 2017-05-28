@@ -10,8 +10,8 @@ class PhraseList extends Component {
                         {this.props.phrase.map((phrases) => {
                               return (
                                     <Phrase 
-                                    key={phrase.id}
-                                    phrase={phrase}
+                                    // key={phrase.id}
+                                    // phrase={phrase}
                                     handleDeletePhrase={this.props.handleDeletePhrase}
                                     handleEditPhrase={this.props.handleEditPhrase}
                                     handleSavePhrase={this.props.handleSavePhrase} />
