@@ -135,9 +135,18 @@ TRANSLATION COMPONENT
   box-sizing: border-box;
 }
 
+textarea {
+  outline: none;
+}
+
 select, input {
   border: 1px solid black;
   margin: 10px;
+  outline: none;
+}
+
+button {
+  outline: none;
 }
 
 select {
@@ -156,13 +165,24 @@ select {
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin: 20px 0;
+  margin: 30px 0 0;
 }
 
 #submit-btn {
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 5px;
   width: 25%;
+  color: white;
+  border: none;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding-bottom: 5px;
+  font-size: 1.25em;
+  outline: none;
+}
+
+#submit-btn:active {
+  color: gray;
 }
 
 
@@ -174,11 +194,13 @@ select {
 
 #from-text {
   position: absolute;
-  bottom: 70%;
+  bottom: 90%;
   left: 5%;
-  border: 1px solid black;
+  border-radius: 15px;
+  color: white;
   background-color: lightblue;
   padding: 5px;
+  z-index: 2;
 } 
 
 #langFrom {
@@ -191,7 +213,7 @@ select {
     border-radius: 0;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    background-color: blue;
+    background-color: lightblue;
     color: white;
     border: none;
     outline: none;
@@ -208,7 +230,7 @@ select {
 	width: 0;
 	height: 0;
   top: 15%;
-	border-top: 40px solid blue;
+	border-top: 40px solid lightblue;
 	border-right: 40px solid transparent;
 }
 
@@ -217,7 +239,7 @@ select {
 	width: 0;
 	height: 0;
   top: 15%;
-	border-bottom: 40px solid green;
+	border-bottom: 40px solid lightgreen;
 	border-left: 40px solid transparent;
 }
 
@@ -238,7 +260,7 @@ select {
     border-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: green;
+    background-color: lightgreen;
     color: white;
     border: none;
     outline: none;
@@ -248,9 +270,11 @@ select {
   position: absolute;
   top: 85%;
   right: 5%;
-  border: 1px solid black;
-  background-color: lightblue;
+  border-radius: 15px;
+  color: white;
+  background-color: lightgreen;
   padding: 5px;
+  z-index: 2;
 }
 
 

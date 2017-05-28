@@ -14,6 +14,8 @@ class Translation extends Component {
       audioClip: null,
       isRecording: false,
       recClass: 'off',
+      convoMode: false,
+      convoStyle: {backgroundColor: 'white', color: 'black'},
     }
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
@@ -22,6 +24,7 @@ class Translation extends Component {
     this.recogRoute = this.recogRoute.bind(this);
     this.clear = this.clear.bind(this);
     this.handlePhraseSubmit = this.handlePhraseSubmit.bind(this);
+    this.convoToggle = this.convoToggle.bind(this);;
   }
 
 componentDidMount() {
@@ -170,6 +173,19 @@ translation(e) {
     })
 }
 
+  convoToggle() {
+    console.log('first', this.state.convoMode)
+    this.setState((prevState) => {this.setState({convoMode: !(prevState.convoMode)})},
+    () => {
+      console.log('state set', this.state.convoMode)
+      if (this.state.convoMode === true) {
+        console.log('inside', this.state.convoMode)
+        this.setState({convoStyle: {backgroundColor: 'black', color: 'white'}})
+      } else {this.setState({convoStyle: {backgroundColor: 'white', color: 'black'}})}
+    });
+    console.log('outside', this.state.convoMode)
+  }
+
   clear() {
     this.setState({
       text: '',
@@ -222,13 +238,13 @@ translation(e) {
                     </select>
                   </div>
                   </div>
-                <input id='submit-btn' type='submit'/><br/>
+                <input id='submit-btn' type='submit'/>
               <textarea id='result-box' name='result' rows='3' value={this.state.result} onChange={(e) => this.handleResult(e)}></textarea>
             </form>
           </div>
           <div id='two-button-div'>
             <button id='save-btn' onClick={this.handlePhraseSubmit}>Save</button>
-            <button id='convo-btn' onClick={this.handleConvo}><i className="fa fa-comments-o" aria-hidden="true"></i></button>
+            <button id='convo-btn' style={this.state.convoStyle} onClick={this.convoToggle}><i className="fa fa-comments-o" aria-hidden="true"></i></button>
             <button id='clear-btn' onClick={this.clear}>Clear</button>
           </div>
         </div>
