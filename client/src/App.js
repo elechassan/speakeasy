@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Translation from './components/Translation';
 import Recorder from './components/Recorder';
+import TestBackend from './components/TestBackend';
 import {
   BrowserRouter as Router,
   Route,
@@ -45,15 +46,16 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-          <main> 
-            <Route exact path='/' component={Translation} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/login' component={Login} />
-          </main>
+          <Translation/>
+          <Route path='/phraselist' component={PhraseList} />
           {/*<Recorder recordState={this.recordState}/>
+          <Link to="/phraselist">Phrase List</Link>
+          <main> 
+            <Route path='/login' component={Login} />
+            <Route path='/test' component={TestBackend} />
+          </main>
           <Nav />
-          <Footer />
-          <Translation audioClip={this.state.audioClip}/>*/}
+          <Footer />*/}
         </div>
       </Router>
     );

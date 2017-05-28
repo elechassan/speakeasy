@@ -20,6 +20,8 @@ class Translation extends Component {
     this.translation = this.translation.bind(this);
     this.recognizeAudio = this.recognizeAudio.bind(this);
     this.recogRoute = this.recogRoute.bind(this);
+    this.clear = this.clear.bind(this);
+    this.handlePhraseSubmit = this.handlePhraseSubmit.bind(this);
   }
 
 componentDidMount() {
@@ -55,7 +57,10 @@ recognizeAudio() {
   })
   .then((json) => {
     let jsonObj = JSON.parse(json);
-    this.setState({text: jsonObj._text})
+    console.log(jsonObj._text);
+    let phrase = jsonObj._text.charAt(0).toUpperCase() + jsonObj._text.slice(1)
+    console.log(phrase);
+    this.setState({text: phrase})
   })
 }
 
@@ -146,6 +151,32 @@ translation(e) {
     responsiveVoice.speak(result, lang);
   }
 
+  handlePhraseSubmit() {
+    let lang = document.querySelector('#langFrom')[0].value;
+    fetch('http://localhost:3001/api/phrases', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          credentials: "same-origin",
+          body: JSON.stringify({
+                phrase: this.state.text,
+                language: lang,
+          }),
+    })
+    .then((res) => {
+          return res.json()
+    })
+    .then((json) => {
+          console.log(json);
+    })
+}
+
+  clear() {
+    this.setState({
+      text: '',
+      result: ''
+    });
+  }
+
   render() {
     return (
       <div id='translation-container'>
@@ -154,42 +185,51 @@ translation(e) {
             <form id='translation-form' onSubmit={(e) => this.translation(e)}>
               <textarea id='input-box' name='text' rows='3' value={this.state.text} onChange={(e) => this.handleInput(e)}/>
                 <div id='to-from-div'>
-                <div>From:</div>
-                  <select name='langFrom'> 
-                    <option value='en'>English</option>
-                    <option value='es'>Spanish</option>
-                    <option value='fr'>French</option>
-                    <option value='pt'>Portuguese</option>
-                    <option value='it'>Italian</option>
-                    <option value='ru'>Russian</option>
-                    <option value='ar'>Arabic</option>
-                    <option value='zh-CN'>Chinese</option>
-                    <option value='ja'>Japanese</option>
-                    <option value='de'>German</option>
-                    <option value='sw'>Swahili</option>
-                  </select>
-                  <div>To:</div>
-                  <select name='langTo'> 
-                    <option value='en'>English</option>
-                    <option value='es'>Spanish</option>
-                    <option value='fr'>French</option>
-                    <option value='pt'>Portuguese</option>
-                    <option value='it'>Italian</option>
-                    <option value='ru'>Russian</option>
-                    <option value='ar'>Arabic</option>
-                    <option value='zh-CN'>Chinese</option>
-                    <option value='ja'>Japanese</option>
-                    <option value='de'>German</option>
-                    <option value='sw'>Swahili</option>
-                  </select>
-                  <input type='submit'/><br/>
-                </div>
+                  <div id='from-div'>
+                    <div id='from-text'>FROM</div>
+                    <select name='langFrom' id='langFrom'> 
+                      <option value='en'>English</option>
+                      <option value='es'>Spanish</option>
+                      <option value='fr'>French</option>
+                      <option value='pt'>Portuguese</option>
+                      <option value='it'>Italian</option>
+                      <option value='ru'>Russian</option>
+                      <option value='ar'>Arabic</option>
+                      <option value='zh-CN'>Chinese</option>
+                      <option value='ja'>Japanese</option>
+                      <option value='de'>German</option>
+                      <option value='sw'>Swahili</option>
+                    </select>
+                  </div>
+                  <div id='triangle-div'>
+                    <div id='triangle-topleft'></div>
+                    <div id='triangle-bottomright'></div>
+                  </div>
+                  <div id='to-div'>
+                    <div id='to-text'>TO</div>
+                    <select name='langTo' id='langTo'> 
+                      <option value='en'>English</option>
+                      <option value='es' selected='selected'>Spanish</option>
+                      <option value='fr'>French</option>
+                      <option value='pt'>Portuguese</option>
+                      <option value='it'>Italian</option>
+                      <option value='ru'>Russian</option>
+                      <option value='ar'>Arabic</option>
+                      <option value='zh-CN'>Chinese</option>
+                      <option value='ja'>Japanese</option>
+                      <option value='de'>German</option>
+                      <option value='sw'>Swahili</option>
+                    </select>
+                  </div>
+                  </div>
+                <input id='submit-btn' type='submit'/><br/>
               <textarea id='result-box' name='result' rows='3' value={this.state.result} onChange={(e) => this.handleResult(e)}></textarea>
             </form>
           </div>
           <div id='two-button-div'>
-            <button id='save-btn'>Save</button>
-            <button id='clear-btn'>Clear</button>
+            <button id='save-btn' onClick={this.handlePhraseSubmit}>Save</button>
+            <button id='convo-btn' onClick={this.handleConvo}><i className="fa fa-comments-o" aria-hidden="true"></i></button>
+            <button id='clear-btn' onClick={this.clear}>Clear</button>
           </div>
         </div>
         <div id='recognize-button-container' className={this.state.recClass}>

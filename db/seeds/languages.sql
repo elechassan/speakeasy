@@ -1,4 +1,4 @@
-INSERT INTO phrases (phrases) VALUES
+INSERT INTO languages (language) VALUES
 (
       'spanish'
 ),
@@ -37,7 +37,6 @@ INSERT INTO phrases (phrases) VALUES
 ),
 (
       'hebrew'
-),
 );
 
 -- deanna gibaldi, brian fink, morgan pitcher, nicole rinaldi, ben swedish

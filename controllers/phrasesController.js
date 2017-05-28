@@ -3,12 +3,11 @@ const Phrases = require('../models/Phrases');
 const phrasesController = {};
 
 phrasesController.index = (req, res) => {
-  console.log('in controller');
   Phrases.findAll()
     .then(phrases => {
       res.json({ 
         message: 'ok',
-        data: { phrases },
+        data: phrases ,
       });
     })
     .catch(err => {
@@ -33,11 +32,12 @@ phrasesController.show = (req, res) => {
 
 phrasesController.create = (req, res) => {
   Phrases.create({
-      phrases: req.body.tweed,
-      time: Date.now(),
+      phrase: req.body.phrase,
+      language: req.body.language
     })
-    .then(tweed => {
-      res.json({message: 'ok', data: { tweed }});
+    .then((phrase) => {
+      console.log(phrase)
+      res.json({message: 'ok', data: phrase});
     })
     .catch(err => {
       console.log(err);
@@ -47,12 +47,13 @@ phrasesController.create = (req, res) => {
 
 phrasesController.update = (req, res) => {
   Phrases.update({
-    phrases: req.body.phrases,
+    phrase: req.body.phrase,
+    language: req.body.language
   }, req.params.id)
-    .then(phrases => {
+    .then(phrase => {
       res.json({
         message: 'ok',
-        data: { phrases },
+        data: { phrase },
       });
     })
     .catch(err => {

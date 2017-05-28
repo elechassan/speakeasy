@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class TestBackend extends Component {
 
    componentDidMount() {
-    fetch('/api/phrases') 
+    fetch('/users/phrases', {
+      credentials: 'same-origin'
+    }) 
     .then((response) => {
       return response.json()
     })
