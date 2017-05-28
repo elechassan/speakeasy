@@ -7,14 +7,25 @@ class Phrase extends Component {
 
             this.state = {
                   isBeingEdited: false,
-                  inputContentValue: this.props.phrase.content,
-                  inputLanguageValue: this.props.phrase.language,
+                  phrase: '',
+                  language: '',
+                  inputContentValue: '',
+                  inputLanguageValue: '',
                   // inputCountryValue: '',
             }
 
             this.handleInputContentChange = this.handleInputContentChange.bind(this);
             this.handleInputLanguageChange = this.handleInputLanguageChange.bind(this);
             // this.handleInputCountryChange = this.handleInputCountryChange.bind(this);
+      }
+
+      componentDidMount() {
+            this.setState({
+                  phrase: this.props.phrase.phrase,
+                  language: this.props.phrase.language,
+                  inputContentValue: this.props.phrase.phrase,
+                  inputLanguageValue: this.props.phrase.language
+            });
       }
 
       handleInputContentChange(event) {
@@ -25,30 +36,63 @@ class Phrase extends Component {
             this.setState({inputLanguageValue: event.target.value});
       }
 
+      handlePhraseEdit(e) {
+            let id = this.props.id;
+            fetch(`http://localhost:3001/api/phrases/${id}`, {
+                  method: 'PUT',
+                  headers: {'Content-type': 'application/json'},
+                  credentials: 'same-origin',
+                  body: JSON.stringify({
+                        phrase: e.target.phrase.value,
+                        language: e.target.language.value
+                  })
+            })
+            .then((res) => {
+                  return res.json()
+            })
+            .then((json) => {
+                  console.log(json);
+            });
+      } 
+
+      handleDeletePhrase(e) {
+            let id = this.props.id;
+            fetch(`http://localhost:3001/api/phrases/${id}`, {
+                  method: 'DELETE',
+                  credentials: 'same-origin',
+            })
+            .then((res) => {
+                  return res.json()
+            })
+            .then((json) => {
+                  console.log(json);
+            });
+      }
+
       // handleInputCountryChange(event) {
       //       this.setState({inputCounryValue: event.target.value});
       // }
 
       renderEditForm() {
             return (
-                  <li>
                         <form className="add-phrase-form" 
                         onSubmit={(event) => {
-                              this.props.handlePhraseEdit(event);
+                              event.preventDefault();
+                              this.handlePhraseEdit(event);
                               this.setState({isBeingEdited: false});
                         }}
                         >
                               <input
                               type="text"
                               value={this.state.inputContentValue}
-                              name='content'
+                              name='phrase'
                               onChange={this.handleInputContentChange}
                               /> <br/>
 
                               <input 
                               type="text"
                               value={this.state.inputLanguageValue}
-                              name='content'
+                              name='language'
                               onChange={this.handleInputLanguageChange}
                               /> <br/>
 
@@ -70,7 +114,6 @@ class Phrase extends Component {
                               />
                               <input type="submit" value="Submit Phrase Edit!"/>
                         </form>
-                  </li>
             );
       }
 
@@ -80,24 +123,25 @@ class Phrase extends Component {
        */ 
       renderPhrase() {
             return (
-                  <li className="phrase">
-                        <h2>{this.props.phrase.language}</h2>
-                        <p>Content: {this.props.phrase.content}</p>
+                  <tr className="phrase">
+                        <td>{this.props.id}</td>
+                        <td>{this.props.phrase.phrase}</td>
+                        <td>{this.props.phrase.language}</td>
                         {/*<p>Country: {this.props.phrase.country_type}</p>*/}
                         {/*I don't know if the country option will be available but I'm keeping it in case that's something we want to add post MVP as an option for the user*/}
                         
 
                         {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
-                        <button onClick={() => { this.props.handleDeletePhrase(this.props.phrase.id) }}>
+                        <td><button onClick={(e) => this.handleDeletePhrase(e)}>
                               Delete Phrase
-                        </button>
+                        </button></td>
 
-                        <button onClick={() => {
+                        <td><button onClick={() => {
                               this.setState({isBeingEdited: true})
                               }}>
                               Edit Phrase
-                        </button>
-                  </li>
+                        </button></td>
+                  </tr>
             );
       }
 

@@ -6,10 +6,11 @@ const authRoutes = express.Router();
 const authHelpers = require('../services/auth/authHelpers');
 const passport = require('../services/auth/local');
 
-function test(req, res, next) {
-    console.log('testing', req.user)
-    next();
-}
+// function loggedIn(req, res) {
+//   console.log('logged', req.user.username);
+//   console.log(req.isAuthenticated())
+//   res.json({user: req.user.username});
+// }
 
 authRoutes.get('/login', (req, res) => {
   res.json({message: 'no good brah'});
@@ -22,12 +23,16 @@ authRoutes.get('/logout', (req, res) => {
 
 authRoutes.post('/register', authController.create);
 
-authRoutes.post('/login', test,
-  passport.authenticate('local', {
-    successRedirect: '/users',
-    failureRedirect: '/auth/login',
-    failureFlash: false,
+authRoutes.post('/login',
+  passport.authenticate('local'), 
+  (req, res) => {
+    res.json(req.user.username);
   })
-);
+  
+
+
+// authRoutes.post('/login',
+//   passport.authenticate('local', { successRedirect: '/users',
+//                                    failureRedirect: '/login' }));
 
 module.exports = authRoutes;

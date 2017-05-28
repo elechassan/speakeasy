@@ -1,122 +1,161 @@
-INSERT INTO phrases (phrases) VALUES
+INSERT INTO phrases (phrase, language) VALUES
   (
     'how are you',
+    'x'
   ),
   (
-    'where is the bathroom'
+    'where is the bathroom',
+    'x'
   ),
   (
-    'where is the gym'
+    'where is the gym',
+    'x'
   ),
   (
-    'how do I get to the airport'
+    'how do I get to the airport',
+    'x'
   ),
   (
-    'good morning'
+    'good morning',
+    'x'
   ),
   (
-    'what time is my flight'
+    'what time is my flight',
+    'x'
   ),
   (
-    'what time is it'
+    'what time is it',
+    'x'
   ),
   (
-    'I am visiting family'
+    'I am visiting family',
+    'x'
   ),
   (
-    'do you have a map'
+    'do you have a map',
+    'x'
   ),
   (
-    'where can I find a taxi'
+    'where can I find a taxi',
+    'x'
   ),
   (
-    'I don\t understand'
+    'I don\t understand',
+    'x'
   ),
   (
-    'where can I find a restaurant'
+    'where can I find a restaurant',
+    'x'
   ),
   (
-    'how do you get to Times Square'
+    'how do you get to Times Square',
+    'x'
   ),
   (
-    'can you speak more slowly'
+    'can you speak more slowly',
+    'x'
   ),
   (
-    'do you take credit cards'
+    'do you take credit cards',
+    'x'
   ),
   (
-    'I\m lost'
+    'I\m lost',
+    'x'
   ),
   (
-    'what is your favorite movie'
+    'what is your favorite movie',
+    'x'
   ),
   (
-    'what is your job'
+    'what is your job',
+    'x'
   ),
   (
-    'where do you like to go for fun'
+    'where do you like to go for fun',
+    'x'
   ),
   (
-    'do you want to go out'
+    'do you want to go out',
+    'x'
   ),
   (
-    '你是性感的'
+    '你是性感的',
+    'x'
   ),
   (
-    'como te llamas'
+    'como te llamas',
+    'x'
   ),
   (
-    'que quieres tomar'
+    'que quieres tomar',
+    'x'
   ),
   (
-    'que hora es'
+    'que hora es',
+    'x'
   ),
   (
-    'buona giornata'
+    'buona giornata',
+    'x'
   ),
   (
-    'potrei vedere il menu'
+    'potrei vedere il menu',
+    'x'
   ),
   (
-    'mi porti a questo indirizzo, por favore'
+    'mi porti a questo indirizzo, por favore',
+    'x'
   ),
   (
-    'je vous en prie '
+    'je vous en prie ',
+    'x'
   ),
   (
-    'je suis la pour les vacances'
+    'je suis la pour les vacances',
+    'x'
   ),
   (
-    'pouvez-vous m\aider'
+    'pouvez-vous m\aider',
+    'x'
   ),
   (
-    'main amerikaa se hoon'
+    'main amerikaa se hoon',
+    'x'
   ),
   (
-    'aap kaise hain'
+    'aap kaise hain',
+    'x'
   ),
   (
-    'Сколько лет, сколько зим'
+    'Сколько лет, сколько зим',
+    'x'
   ),
   (
-    'Доброе утро'
+    'Доброе утро',
+    'x'
   ),
   (
-    'أنا بخير شكرا'
+    'أنا بخير شكرا',
+    'x'
   ),
   (
-    'إشتقت إليك كثيرا'
+    'إشتقت إليك كثيرا',
+    'x'
   ),
   (
-    'هل استمتعت بوقتك هنا؟'
+    'هل استمتعت بوقتك هنا؟',
+    'x'
   ),
   (
-    'habari'
+    'habari',
+    'x'
   ),
   (
-    'nafurahi kukuona'
+    'nafurahi kukuona',
+    'x'
   ),
   (
-    'ninakupenda'
-  ),
+    'ninakupenda',
+    'x'
   );

@@ -18,24 +18,25 @@ Phrases.findById = (id) => {
   );
 };
 
-Phrases.create = (phrases) => {
+Phrases.create = (phrase) => {
   return db.one(
     `
-    INSERT INTO phrases (phrases, users_id)
+    INSERT INTO phrases (phrase, language)
     VALUES ($1, $2)
     RETURNING *`,
-    [phrases.phrases, phrases.user_id]
+    [phrase.phrase, phrase.language]
   );
 };
 
-Phrases.update = (phrases, id) => {
+Phrases.update = (phrase, id) => {
   return db.one(
     `
       UPDATE phrases SET
-      phrases = $1
-      WHERE id = $2
+      phrase = $1,
+      language = $2
+      WHERE id = $3
       RETURNING *
-    `, [phrases.phrases, id]
+    `, [phrase.phrase, phrase.language, id]
   );
 };
 

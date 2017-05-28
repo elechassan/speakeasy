@@ -24,4 +24,8 @@ authController.create = (req, res, next) => {
   });
 };
 
+authController.loggedIn = (req, res) => {
+  console.log(req.user);
+}
+
 module.exports = authController;

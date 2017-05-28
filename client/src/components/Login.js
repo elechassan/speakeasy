@@ -23,6 +23,7 @@ logIn(e) {
     }),
   })
   .then((res) => {
+    console.log('received?')
     return res.json()
   })
   .then((json) => {
