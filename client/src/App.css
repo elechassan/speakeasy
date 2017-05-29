@@ -339,11 +339,16 @@ select {
   outline: none;
 }
 
-
-
-
-
 textarea {
   border: 1px solid black;
   margin: auto;
+}
+
+/*-----------------------------
+PHRASE LIST COMPONENT 
+-----------------------------*/
+
+.add-phrase-form {
+  display: flex;
+  flex-direction: row;
 }

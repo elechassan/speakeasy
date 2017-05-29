@@ -75,7 +75,7 @@ class Phrase extends Component {
 
       renderEditForm() {
             return (
-                        <form className="add-phrase-form" 
+                        <form className="edit-phrase-form" 
                         onSubmit={(event) => {
                               event.preventDefault();
                               this.handlePhraseEdit(event);
@@ -114,6 +114,7 @@ class Phrase extends Component {
                               />
                               <input type="submit" value="Submit Phrase Edit!"/>
                         </form>
+
             );
       }
 
@@ -132,14 +133,14 @@ class Phrase extends Component {
                         
 
                         {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
-                        <td><button onClick={(e) => this.handleDeletePhrase(e)}>
-                              Delete Phrase
-                        </button></td>
 
                         <td><button onClick={() => {
                               this.setState({isBeingEdited: true})
                               }}>
                               Edit Phrase
+                        </button></td>
+                        <td><button onClick={(e) => this.handleDeletePhrase(e)}>
+                              Delete Phrase
                         </button></td>
                   </tr>
             );
