@@ -75,6 +75,7 @@ class Phrase extends Component {
 
       renderEditForm() {
             return (
+                  <tr>
                         <form className="edit-phrase-form" 
                         onSubmit={(event) => {
                               event.preventDefault();
@@ -82,19 +83,22 @@ class Phrase extends Component {
                               this.setState({isBeingEdited: false});
                         }}
                         >
+                              <table>
+                              <tr>
+                              <td>     
                               <input
                               type="text"
                               value={this.state.inputContentValue}
                               name='phrase'
                               onChange={this.handleInputContentChange}
-                              /> <br/>
-
+                              /> </td>
+                              <td>
                               <input 
                               type="text"
                               value={this.state.inputLanguageValue}
                               name='language'
                               onChange={this.handleInputLanguageChange}
-                              /> <br/>
+                              /> </td>
 
                               {/*<input 
                               type="text"
@@ -105,15 +109,19 @@ class Phrase extends Component {
                               /> <br/>*/}
 
                               {/*have to continue to work on a few things*/}
-
                               <input 
-                              style={{visibility: 'hidden'}}
+                              style={{display: 'none'}}
                               readOnly
                               name="id"
                               value={this.props.phrase.id}
                               />
+                              <td>
                               <input type="submit" value="Submit Phrase Edit!"/>
+                              </td>
+                              </tr>
+                              </table>
                         </form>
+                        </tr>
 
             );
       }

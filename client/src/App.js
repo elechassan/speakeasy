@@ -46,9 +46,9 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-          <Translation/>
           <PhraseList />
           {/*<Recorder recordState={this.recordState}/>
+          <Translation/>
           <Route path='/phraselist' component={PhraseList} />
           <Link to="/phraselist">Phrase List</Link>
           <main> 

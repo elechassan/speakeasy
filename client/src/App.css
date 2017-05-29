@@ -352,3 +352,8 @@ PHRASE LIST COMPONENT
   display: flex;
   flex-direction: row;
 }
+
+.edit-phrase-form {
+  display: flex;
+  flex-direction: row;
+}
