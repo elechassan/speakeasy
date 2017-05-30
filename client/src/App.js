@@ -8,8 +8,8 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Translation from './components/Translation';
-import Recorder from './components/Recorder';
-import TestBackend from './components/TestBackend';
+// import Recorder from './components/Recorder';
+// import TestBackend from './components/TestBackend';
 import {
   BrowserRouter as Router,
   Route,
@@ -22,8 +22,8 @@ class App extends Component {
     this.state = {
       text: '',
       audioClip: null,
-      username: null,
-      isLogged: false,
+      // username: null,
+      // isLogged: false,
     }
     this.recordState = this.recordState.bind(this);
   }
@@ -32,30 +32,29 @@ class App extends Component {
     this.setState({audioClip: clip});
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3001/api/phrases') 
-    .then((response) => {
-      return response.json()
-    })
-    .then ((responseJson) => {
-      console.log(responseJson)
-    });
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:3001/api/phrases') 
+  //   .then((response) => {
+  //     return response.json()
+  //   })
+  //   .then ((responseJson) => {
+  //     console.log(responseJson)
+  //   });
+  // }
 
   render() {
     return (
       <Router>
       <div className="App">
-          <PhraseList />
-          {/*<Recorder recordState={this.recordState}/>
-          <Translation/>
           <Route path='/phraselist' component={PhraseList} />
+          <Route exact path='/' component={Translation} />
+          <Nav />
+          {/*<Recorder recordState={this.recordState}/>
           <Link to="/phraselist">Phrase List</Link>
           <main> 
             <Route path='/login' component={Login} />
             <Route path='/test' component={TestBackend} />
           </main>
-          <Nav />
           <Footer />*/}
         </div>
       </Router>

@@ -24,11 +24,11 @@ class PhraseList extends Component {
 
       render() {
             return (
-                  <div>
+                  <div className='phrase-list-div'>
                         <AddPhraseForm />
                         <table className="phrase-list">
                               <tr>
-                                    <th>ID</th>
+                                    <th>X</th>
                                     <th>Phrase</th>
                                     <th>Language</th>
                               </tr>

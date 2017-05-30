@@ -15,7 +15,7 @@ class Translation extends Component {
       isRecording: false,
       recClass: 'off',
       convoMode: false,
-      convoStyle: {backgroundColor: 'white', color: 'black'},
+      convoStyle: {backgroundColor: '#FFFFEA', color: 'black'},
     }
     this.handleInput = this.handleInput.bind(this);
     this.speak = this.speak.bind(this);
@@ -27,11 +27,11 @@ class Translation extends Component {
     this.convoToggle = this.convoToggle.bind(this);;
   }
 
-componentDidMount() {
-  this.setState({audioClip: this.props.audioClip});
-  console.log(this.state.isRecording);
+// componentDidMount() {
+//   this.setState({audioClip: this.props.audioClip});
+//   console.log(this.state.isRecording);
 
-}
+// }
 
 recogRoute() {
   this.setState((prevState) => {return ({isRecording: !prevState.isRecording})}, 
@@ -59,6 +59,7 @@ recognizeAudio() {
     return res.json()
   })
   .then((json) => {
+    console.log(json)
     let jsonObj = JSON.parse(json);
     console.log(jsonObj._text);
     let phrase = jsonObj._text.charAt(0).toUpperCase() + jsonObj._text.slice(1)
@@ -129,9 +130,6 @@ translation(e) {
       case 'de': 
         speakLang = 'Deutsch Female';
         break;
-      case 'sw': 
-        speakLang = 'Swahili Male';
-        break;
       case 'en': 
         speakLang = 'US English Female';
         break;
@@ -178,7 +176,7 @@ translation(e) {
     () => {
       if (this.state.convoMode === true) {
         this.setState({convoStyle: {backgroundColor: 'black', color: 'white'}})
-      } else {this.setState({convoStyle: {backgroundColor: 'white', color: 'black'}})}
+      } else {this.setState({convoStyle: {backgroundColor: '#FFFFEA', color: 'black'}})}
     });
   }
 
@@ -198,7 +196,6 @@ translation(e) {
               <textarea id='input-box' name='text' rows='3' value={this.state.text} onChange={(e) => this.handleInput(e)}/>
                 <div id='to-from-div'>
                   <div id='from-div'>
-                    <div id='from-text'>FROM</div>
                     <select name='langFrom' id='langFrom'> 
                       <option value='en'>English</option>
                       <option value='es'>Spanish</option>
@@ -210,7 +207,6 @@ translation(e) {
                       <option value='zh-CN'>Chinese</option>
                       <option value='ja'>Japanese</option>
                       <option value='de'>German</option>
-                      <option value='sw'>Swahili</option>
                     </select>
                   </div>
                   <div id='triangle-div'>
@@ -218,7 +214,6 @@ translation(e) {
                     <div id='triangle-bottomright'></div>
                   </div>
                   <div id='to-div'>
-                    <div id='to-text'>TO</div>
                     <select name='langTo' id='langTo'> 
                       <option value='en'>English</option>
                       <option value='es' selected='selected'>Spanish</option>
@@ -230,7 +225,6 @@ translation(e) {
                       <option value='zh-CN'>Chinese</option>
                       <option value='ja'>Japanese</option>
                       <option value='de'>German</option>
-                      <option value='sw'>Swahili</option>
                     </select>
                   </div>
                   </div>

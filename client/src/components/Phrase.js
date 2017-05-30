@@ -131,9 +131,12 @@ class Phrase extends Component {
        * This will be called only when the render method for isBeingEdited is set to false.
        */ 
       renderPhrase() {
+            const xbtn = {'color': 'red'};
             return (
                   <tr className="phrase">
-                        <td>{this.props.id}</td>
+                        <td><button style={this.xbtn} onClick={(e) => this.handleDeletePhrase(e)}>
+                             (X)
+                        </button></td>
                         <td>{this.props.phrase.phrase}</td>
                         <td>{this.props.phrase.language}</td>
                         {/*<p>Country: {this.props.phrase.country_type}</p>*/}
@@ -141,14 +144,10 @@ class Phrase extends Component {
                         
 
                         {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
-
                         <td><button onClick={() => {
                               this.setState({isBeingEdited: true})
                               }}>
                               Edit Phrase
-                        </button></td>
-                        <td><button onClick={(e) => this.handleDeletePhrase(e)}>
-                              Delete Phrase
                         </button></td>
                   </tr>
             );
