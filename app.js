@@ -48,8 +48,8 @@ app.use('/translation', translationRoute);
 // const authRoutes = require('./routes/authRoutes');
 // app.use('/auth', authRoutes);
 
-const userRoutes = require('./routes/userRoutes');
-app.use('/users', userRoutes)
+// const userRoutes = require('./routes/userRoutes');
+// app.use('/users', userRoutes)
 
 app.use('/testing', (req, res) => {
     console.log('successssss', req.user);

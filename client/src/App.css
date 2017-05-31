@@ -1,6 +1,7 @@
 html {
   height: 100%;
   width: 100%;
+  background-color: #FFFFEA;
 }
 
 .App {
@@ -26,14 +27,31 @@ html {
   flex-direction: row;
   width: 100%;
   height: 60px;
-  background-color: yellow;
+  background-color: #FFED66;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
 }
 
-#nav-title-div, #nav-link-div {
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+#nav-title-div {
+  flex: 1;
   padding: 20px;
+}
+
+#nav-link-div {
+  flex: 2;
+  padding: 20px;
+}
+
+#nav-link-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*--------------------------
@@ -118,7 +136,7 @@ TRANSLATION COMPONENT
 #translation-container {
   display: flex;
   width: 100%;
-  margin: 75px auto;
+  margin: 90px auto;
   flex-direction: column;
 }
 
@@ -136,7 +154,26 @@ TRANSLATION COMPONENT
 }
 
 textarea {
+  font-size: 1em;
+  border: none;
   outline: none;
+  margin: auto;
+  resize: none;
+}
+
+#input-box {
+  width: 85%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #FF5E5B;
+}
+
+
+#result-box {
+  width: 85%;
+  background-color: #00CECB;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 select, input {
@@ -145,14 +182,18 @@ select, input {
   outline: none;
 }
 
+
+option {
+  background-color: #FFFFEA;
+}
+
 button {
   outline: none;
 }
 
 select {
   height: 40px;
-  font-size: 1.5em;
-  padding-left: 6%;
+  font-size: 1.25em;
   text-align: center;
   width: 130px;
 }
@@ -163,20 +204,22 @@ select {
   position: relative;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-  margin: 30px 0 0;
+  margin: 0;
+  padding-left: 4px;
 }
 
 #submit-btn {
   justify-content: center;
+  position: fixed;
+  bottom: 15%;
+  left: 37%;
   margin: 0 auto 5px;
   width: 25%;
-  color: white;
   border: none;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  padding-bottom: 5px;
+  border-radius: 15px;
+  padding: 15px;
   font-size: 1.25em;
   outline: none;
 }
@@ -196,31 +239,28 @@ select {
   position: absolute;
   bottom: 90%;
   left: 5%;
-  border-radius: 15px;
-  color: white;
-  background-color: lightblue;
+  background-color: #FF5E5B;
   padding: 5px;
   z-index: 2;
 } 
 
 #langFrom {
+    box-sizing: border-box;
     position: relative;
-    width: 150px;
+    width: 140px;
     left: 15%;
     margin: 0;
     top: 15%;
-    padding-left: 10px;
+    padding-left: 20px;
     border-radius: 0;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    background-color: lightblue;
-    color: white;
+    background-color: #FF5E5B;
     border: none;
     outline: none;
 }
 
 #triangle-div {
   position: relative;
+  box-sizing: border-box;
   margin-bottom: 10.5%;
   flex: 1;
 }
@@ -230,7 +270,7 @@ select {
 	width: 0;
 	height: 0;
   top: 15%;
-	border-top: 40px solid lightblue;
+	border-top: 40px solid #FF5E5B;
 	border-right: 40px solid transparent;
 }
 
@@ -239,7 +279,7 @@ select {
 	width: 0;
 	height: 0;
   top: 15%;
-	border-bottom: 40px solid lightgreen;
+	border-bottom: 40px solid #00CECB;
 	border-left: 40px solid transparent;
 }
 
@@ -251,18 +291,19 @@ select {
 
 
 #langTo {
-    width: 150px;
+    box-sizing: border-box;
+    width: 145px;
     right: 10%;
     margin: 0;
     top: 15%;
     position: relative;
     padding-left: 10px;
     border-radius: 0;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: lightgreen;
-    color: white;
     border: none;
+    /*border-bottom: 1px solid #FFFFEA;*/
+    /*border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;*/
+    background-color: #00CECB;
     outline: none;
 }
 
@@ -270,9 +311,8 @@ select {
   position: absolute;
   top: 85%;
   right: 5%;
-  border-radius: 15px;
-  color: white;
-  background-color: lightgreen;
+  color: #FFFFEA;
+  background-color: #00CECB;
   padding: 5px;
   z-index: 2;
 }
@@ -285,18 +325,36 @@ select {
   justify-content: space-around;
   align-items: center;
   margin: 25px 25px 0 25px;
+  background-color: #FFFFEA;
 }
 
 #save-btn, #clear-btn  {
   font-size: 1.5em;
-  border: 1px solid black;
+  border: none;
   padding: 10px 15px;
 }
 
+#save-btn {
+  background-color: #FFED66;
+  /*color: #FFFFEA;*/
+  border-radius: 15px;
+}
+
+#clear-btn {
+  background-color: #FFED66;
+  /*color: #FFFFEA;*/
+  border-radius: 15px;
+  
+}
+
+
 #convo-btn {
   font-size: 2em;
-  border: 1px solid black;
   padding: 5px 10px;
+  background-color: #FFFFEA;
+  border: none;
+  outline: none;
+  border-radius: 15px;
   
 }
 
@@ -305,26 +363,27 @@ select {
   position: absolute;
   bottom: 4%;
   left: 43%;
-  border: 1px solid black;
   border-radius: 100%;
   padding: 10px;
 }
 
 .off {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: #FFFFEA;
+  /*background-color: #FFFFEA;*/
+  /*color: black;*/
   border: none;
 }
 
 @keyframes record {
-    0%   {color: white}
-    50%  {color: red}
-    100% {color: white}
+    0%   {color: #FFFFEA}
+    50%  {color: #FF5E5B}
+    100% {color: #FFFFEA}
 }
 
 .rec {
-  background-color: red;
-  color: white;
+  background-color: #FF5E5B;
+  color: #FFFFEA;
   border: none;
   animation-name: record;
   animation-duration: 1s;
@@ -340,10 +399,36 @@ select {
 }
 
 
+/*-----------------------------
+PHRASE LIST COMPONENT 
+-----------------------------*/
 
+.phrase-list-div {
+  margin-top: 60px;
+}
 
+.add-phrase-form {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  background-color: #FFED66;
+}
 
-textarea {
-  border: 1px solid black;
-  margin: auto;
+.edit-phrase-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-phrase-form input {
+  margin: 5px;
+}
+
+td {
+  margin: 1px;
+  padding: 0px;
+  border: none;
+}
+
+th {
+  font-size: .7em;
 }

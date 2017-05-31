@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
 class Nav extends Component {
   render() {
     return (
@@ -10,7 +16,8 @@ class Nav extends Component {
               SpeakEasy
             </div>
             <div id='nav-link-div'>
-              <div>Login</div>
+              <Link to='/' className='link'>Translation</Link>
+              <Link to='/phraselist' className='link'>Phrase List</Link>
             </div>
           </div>
         </div>

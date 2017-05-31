@@ -75,26 +75,30 @@ class Phrase extends Component {
 
       renderEditForm() {
             return (
-                        <form className="add-phrase-form" 
+                  <tr>
+                        <form className="edit-phrase-form" 
                         onSubmit={(event) => {
                               event.preventDefault();
                               this.handlePhraseEdit(event);
                               this.setState({isBeingEdited: false});
                         }}
                         >
+                              <table>
+                              <tr>
+                              <td>     
                               <input
                               type="text"
                               value={this.state.inputContentValue}
                               name='phrase'
                               onChange={this.handleInputContentChange}
-                              /> <br/>
-
+                              /> </td>
+                              <td>
                               <input 
                               type="text"
                               value={this.state.inputLanguageValue}
                               name='language'
                               onChange={this.handleInputLanguageChange}
-                              /> <br/>
+                              /> </td>
 
                               {/*<input 
                               type="text"
@@ -105,15 +109,20 @@ class Phrase extends Component {
                               /> <br/>*/}
 
                               {/*have to continue to work on a few things*/}
-
                               <input 
-                              style={{visibility: 'hidden'}}
+                              style={{display: 'none'}}
                               readOnly
                               name="id"
                               value={this.props.phrase.id}
                               />
+                              <td>
                               <input type="submit" value="Submit Phrase Edit!"/>
+                              </td>
+                              </tr>
+                              </table>
                         </form>
+                        </tr>
+
             );
       }
 
@@ -122,9 +131,12 @@ class Phrase extends Component {
        * This will be called only when the render method for isBeingEdited is set to false.
        */ 
       renderPhrase() {
+            const xbtn = {'color': 'red'};
             return (
                   <tr className="phrase">
-                        <td>{this.props.id}</td>
+                        <td><button style={this.xbtn} onClick={(e) => this.handleDeletePhrase(e)}>
+                             (X)
+                        </button></td>
                         <td>{this.props.phrase.phrase}</td>
                         <td>{this.props.phrase.language}</td>
                         {/*<p>Country: {this.props.phrase.country_type}</p>*/}
@@ -132,10 +144,6 @@ class Phrase extends Component {
                         
 
                         {/*edit and delete event handlers need to have arrow functions so the arguments aren't called right away*/}
-                        <td><button onClick={(e) => this.handleDeletePhrase(e)}>
-                              Delete Phrase
-                        </button></td>
-
                         <td><button onClick={() => {
                               this.setState({isBeingEdited: true})
                               }}>
